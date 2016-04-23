@@ -1,9 +1,10 @@
 (function () {
     
-    var loginController = function ($scope, tsffService) {
+    var loginController = function ($scope, tsffService, storage) {
 
         var onLoginCompete = function (token) {
             $scope.token = token;
+            storage.saveItem("token", token);
         };
 
         var onError = function (response) {
@@ -22,6 +23,6 @@
     }
 
     var app = angular.module("ziwgApp");    
-    app.controller("loginController", ["$scope", "tsffService", loginController]);
+    app.controller("loginController", ["$scope", "tsffService", "storage", loginController]);
 
 } ());
