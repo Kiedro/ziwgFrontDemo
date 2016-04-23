@@ -1,15 +1,14 @@
 (function () {
-    var app = angular.module("ziwgApp");
+    
+    var loginController = function ($scope, tsffService) {
 
-    var loginController = function ($scope, $http) {
-
-        var onLoginCompete = function (response) {
-            console.log(response.data.access_token);
-            $scope.token = response.data.access_token;
+        var onLoginCompete = function (token) {
+            $scope.token = token;
         };
 
         var onError = function (response) {
-            console.log(response);
+            alert("Błąd: " + response.statusText);
+            console.error(response);
         }
 
         $scope.userLoginEmail = "a@a.com";
@@ -17,17 +16,12 @@
         $scope.token = "(pusto)";
 
         $scope.login = function () {
-            console.log($scope.userLoginEmail + " " + $scope.userLoginPassword);
-
-            $http({
-                url: rootUrl + "/token",
-                method: "POST",
-                data: $.param({ grant_type: 'password', username: $scope.userLoginEmail, password: $scope.userLoginPassword }),
-                headers: { 'content-type': 'application/x-www-form-urlencoded' }
-            }).then(onLoginCompete, onError);
+             var userdata = { email: $scope.userLoginEmail, password: $scope.userLoginPassword };
+             tsffService.getToken(userdata).then(onLoginCompete, onError);
         };
     }
 
-    app.controller("loginController", ["$scope", "$http", loginController]);
+    var app = angular.module("ziwgApp");    
+    app.controller("loginController", ["$scope", "tsffService", loginController]);
 
 } ());
