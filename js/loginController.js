@@ -15,8 +15,11 @@
         $scope.userLoginPassword = "12#Qwe";
 
         $scope.login = function () {
-             var userdata = { email: $scope.userLoginEmail, password: $scope.userLoginPassword };
-             tsffService.getToken(userdata).then(onLoginCompete, onError);
+            var userdata = { 
+				email: $scope.userLoginEmail, 
+				password: $scope.userLoginPassword 
+			};
+            tsffService.getToken(userdata).then(onLoginCompete, onError);
         };
     }
 
