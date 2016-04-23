@@ -13,7 +13,7 @@
             })
             .when("/register", {
                 templateUrl: "views/register.html",
-                //controller: "r"
+                //controller: "registerController"
             })
             .otherwise({ redirectTo: "/main" });
     });

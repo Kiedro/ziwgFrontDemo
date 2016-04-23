@@ -1,5 +1,7 @@
-(function () {
-    
+(function () {	
+		
+    var app = angular.module("ziwgApp", ["ngMessages"]);
+    	
     var registerController = function ($scope, tsffService, storage) {
 
         var onRegisterComplete = function (token) {
@@ -13,6 +15,36 @@
 
         $scope.userLoginEmail = "a@a.com";
         $scope.userLoginPassword = "12#Qwe";
+		$scope.inputConfPassword = "";
+		$scope.message = "";
+		
+		$scope.submit = function(isValid) {
+		  console.log("h");
+		  if (isValid) {
+			$scope.message = "Submitted " + $scope.userLoginEmail;
+		  } else {
+			$scope.message = "There are still invalid fields below.";
+		  }
+		};
+		
+		var compareTo = function(password) {
+		  return {
+			require: "ngModel",
+			scope: {
+				otherModelValue: "=compareTo"
+			},
+			link: function(scope, element, attributes, ngModel) {
+			  
+			  ngModel.$validators.compareTo = function(modelValue) {
+				return modelValue == scope.otherModelValue;
+			};
+
+			scope.$watch("otherModelValue", function() {
+			  ngModel.$validate();
+			});
+		  }
+		};
+	  };
 
         $scope.register = function () {
             var userdata = { 
@@ -23,22 +55,8 @@
         };
     }
 
-    var app = angular.module("ziwgApp");    
-    app.controller("registerController", ["$scope", "tsffService", "storage", registerController]);
-	
+	app.directive("compareTo", compareTo);
+    app.controller("registerController", ["$scope", "tsffService", "storage",  registerController]);
+
 	
 } ());
-
-
---gowno
-('.validatedForm').validate({
-					rules : {
-						password : {
-							minlength : 5
-						},
-						password_confirm : {
-							minlength : 5,
-							equalTo : "#password"
-						}
-					}
-				});
