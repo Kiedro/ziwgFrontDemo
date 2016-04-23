@@ -1,0 +1,23 @@
+{
+  "name": "ziwgFront",
+  "homepage": "https://github.com/Kiedro/ziwgFrontDemo",
+  "authors": [
+    "Kiedro <kiedro@outlook.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "angular": "^1.5.5"
+  }
+}
