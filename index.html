@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ziwgApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ziwg - Frontend</title>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+        crossorigin="anonymous"></script>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/ziwgApp.js"></script>
+    <script src="js/loginController.js"></script>
+    <script>
+        var rootUrl = "http://tsff.azurewebsites.net";
+    </script>
+</head>
+
+<body>
+
+    <div ng-controller="loginController">
+        Token: {{token}}
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Logowanie</h2>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" ng-model="userLoginEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" ng-model="userLoginPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block" ng-click="login()">Login!</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
