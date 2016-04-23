@@ -3,7 +3,6 @@
     var loginController = function ($scope, tsffService, storage) {
 
         var onLoginCompete = function (token) {
-            $scope.token = token;
             storage.saveItem("token", token);
         };
 
@@ -14,7 +13,6 @@
 
         $scope.userLoginEmail = "a@a.com";
         $scope.userLoginPassword = "12#Qwe";
-        $scope.token = "(pusto)";
 
         $scope.login = function () {
              var userdata = { email: $scope.userLoginEmail, password: $scope.userLoginPassword };

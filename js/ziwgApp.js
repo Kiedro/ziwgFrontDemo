@@ -1,12 +1,20 @@
 
 (function () {
-    var app = angular.module("ziwgApp", []);
+    var app = angular.module("ziwgApp", ["ngRoute"]);
 
-// zamiast tego singletona token powinien byc zapisany w localStorage    
-    // app.factory('Credentials', function () {
-    //     return {
-    //         login: '',
-    //         token: 'jesa'
-    //     };
-    // });
+    app.config(function ($routeProvider) {
+        $routeProvider
+            .when("/main", {
+                templateUrl: "views/main.html"
+            })
+            .when("/login", {
+                templateUrl: "views/login.html",
+                controller: "loginController"
+            })
+            .when("/register", {
+                templateUrl: "views/register.html",
+                //controller: "r"
+            })
+            .otherwise({ redirectTo: "/main" });
+    });
 } ());
