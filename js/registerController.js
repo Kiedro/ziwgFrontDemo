@@ -25,5 +25,20 @@
 
     var app = angular.module("ziwgApp");    
     app.controller("registerController", ["$scope", "tsffService", "storage", registerController]);
-
+	
+	
 } ());
+
+
+--gowno
+('.validatedForm').validate({
+					rules : {
+						password : {
+							minlength : 5
+						},
+						password_confirm : {
+							minlength : 5,
+							equalTo : "#password"
+						}
+					}
+				});
