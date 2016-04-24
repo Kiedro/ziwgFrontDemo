@@ -1,8 +1,6 @@
 (function () {	
 		
-    var app = angular.module("ziwgApp", ["ngMessages"]);
-    	
-    var registerController = function ($scope, tsffService, storage) {
+	var registerController = function ($scope, tsffService, storage) {
 
         var onRegisterComplete = function (token) {
             storage.saveItem("token", token);
@@ -54,7 +52,7 @@
             tsffService.getToken(userdata).then(onRegisterComplete, onError);
         };
     }
-
+	var app = angular.module("ziwgApp");
 	app.directive("compareTo", compareTo);
     app.controller("registerController", ["$scope", "tsffService", "storage",  registerController]);
 
