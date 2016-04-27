@@ -9,11 +9,11 @@
         <input type="password" ng-model="userRegisterPassword" id="inputPassword" class="form-control" placeholder="type password" required><br>
                 
 		<label for="inputConfPassword" class="sr-only">Confirm password</label>
-        <input type="confPass" ng-model="userRegisterConfPassword" id="inputConfPassword" class="form-control" placeholder="once again" required>
+        <input type="password" ng-model="userRegisterConfPassword" id="inputConfPassword" class="form-control" placeholder="once again" required>
 
-        <p><small ng-show="(userRegisterConfPassword != '') && (userRegisterPassword != userRegisterConfPassword) || (userRegisterPassword.length <=5)">Passwords don't match or are too short (min. 6 chars)</small></p>
+        <p><small ng-hide="showRegisterBtn()">Passwords don't match or are too short (min. 6 chars)</small></p>
         
-        <button class="btn btn-lg btn-primary btn-block" ng-click="register()" ng-hide= "(userRegisterConfPassword != '') && (userRegisterPassword != userRegisterConfPassword) || (userRegisterPassword.length <=5) || (userRegisterConfPassword.length <=5)">Register!</button>
+        <button class="btn btn-lg btn-primary btn-block" ng-click="register()" ng-show="showRegisterBtn()">Register!</button>
     </form>
     <br>
 </div>

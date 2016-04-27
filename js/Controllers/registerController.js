@@ -2,11 +2,10 @@
     
     var registerController = function ($scope, tsffService, storage) {
 
-        var onRegisterComplete = function (token) {
-            //storage.saveItem("token", token);
+        var onRegisterComplete = function () {
             $('#spinnerDiv').hide(); 
             console.log("Register complete.")
-            tsffService.getToken(userdata).then(onLoginCompete, onError);
+          //  tsffService.getToken(userdata).then(onLoginCompete, onError);
         };
 
         var onError = function (response) {
@@ -18,7 +17,9 @@
         $scope.userRegisterEmail = '';
         $scope.userRegisterPassword = '';
 		$scope.userRegisterConfPassword  = '';
-        $scope.token = '';
+        $scope.showRegisterBtn = function () {
+            return ($scope.userRegisterPassword === $scope.userRegisterConfPassword) && ($scope.userRegisterPassword.length > 5);         
+        }
 
         $scope.register = function () {
             $('#spinnerDiv').show(); 
@@ -30,7 +31,6 @@
              
         };
 
-        $scope.listUserTeams = function(token) {};
     }
     var app = angular.module("ziwgApp"); 
     app.controller("registerController", ["$scope", "tsffService", "storage", registerController]);
