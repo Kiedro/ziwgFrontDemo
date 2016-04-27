@@ -12,7 +12,7 @@
         }
 
         $scope.userLoginEmail = "a@a.com";
-        $scope.userLoginPassword = "12#Qwe";
+        $scope.userLoginPassword = ""; //12#Qwe"
 
         $scope.login = function () {
              var userdata = { email: $scope.userLoginEmail, password: $scope.userLoginPassword };

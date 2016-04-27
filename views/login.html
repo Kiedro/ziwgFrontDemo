@@ -1,11 +1,14 @@
 <div>
-    <form class="form-signin">
+    <form class="form-signin" style="width:500px;  padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;" >
         <h2 class="form-signin-heading">Logowanie</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" ng-model="userLoginEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" ng-model="userLoginPassword" id="inputPassword" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" ng-click="login()">Login!</button>
+
+        <p><small ng-show="(userLoginPassword.length <=5)">Given password is too short! (min. 6 chars)</small></p>
+        <button class="btn btn-lg btn-primary btn-block" ng-click="login()" 
+        ng-hide= "(userLoginPassword == '') || (userLoginPassword.length <=5)">Login!</button>
     </form>
     <br>
     <a href="#/main">Wróć</a>
