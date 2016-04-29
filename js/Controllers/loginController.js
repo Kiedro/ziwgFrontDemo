@@ -3,15 +3,15 @@
     var loginController = function ($scope, tsffService, storage) {
 
         var onLoginCompete = function (token) {
-            storage.saveItem("token", token);
+            storage.saveItem("token", token);            
         };
 
         var onError = function (response) {
             alert("Błąd: " + response.statusText);
             console.error(response);
-        }
+        };
 
-        $scope.userLoginEmail = "a@a.com";
+        $scope.userLoginEmail = "testuser@mail.com";
         $scope.userLoginPassword = ""; //12#Qwe"
 
         $scope.login = function () {

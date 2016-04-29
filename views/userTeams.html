@@ -1,0 +1,11 @@
+<div class="container" style="width:666px;  padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
+
+	<table ng-table="userTeamsController.tableParams" class="table table-hover" show-filter="true">
+	    <tr ng-repeat="user in $data">
+	        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+	            {{user.name}}</td>
+	        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+	            {{user.age}}</td>
+	    </tr>
+	</table>	
+</div>

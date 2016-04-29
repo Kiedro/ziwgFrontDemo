@@ -19,7 +19,7 @@
                 data: $.param({Username: userdata.email, Password: userdata.password }),
                 headers: { 'content-type': 'application/x-www-form-urlencoded' }
             }).then(function (response) {
-                return response.data.message;
+                return response.data.status;
             });  
 
         }

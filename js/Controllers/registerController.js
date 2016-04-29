@@ -2,14 +2,15 @@
     
     var registerController = function ($scope, tsffService, storage) {
 
-        var onRegisterComplete = function (token) {
+        var onRegisterComplete = function (response) {
             //storage.saveItem("token", token);
-            console.log("Register complete.")
+            console.log("Register complete." + response.statusText)
             tsffService.getToken(userdata).then(onLoginCompete, onError);
         };
 
         var onError = function (response) {
-            alert("Błąd: " + response.statusText);
+            alert("Błąd: " + response.data);
+
             console.error(response);
         };
 
