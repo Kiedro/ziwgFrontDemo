@@ -1,9 +1,10 @@
 (function () {
     
-    var loginController = function ($scope, tsffService, storage) {
+    var loginController = function ($scope, tsffService, storage, $location) {
 
         var onLoginCompete = function (token) {
             storage.saveItem("token", token);
+            $location.path('/logged');
             $('#spinnerDiv').hide(); 
         };
 
@@ -24,6 +25,6 @@
     }
 
     var app = angular.module("ziwgApp");    
-    app.controller("loginController", ["$scope", "tsffService", "storage", loginController]);
+    app.controller("loginController", ["$scope", "tsffService", "storage", "$location", loginController]);
 
 } ());

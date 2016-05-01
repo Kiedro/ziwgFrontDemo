@@ -15,6 +15,10 @@
                 templateUrl: "views/register.html",
                 controller: "registerController"
             })
+            .when("/logged", {
+                templateUrl: "views/loggedUser/mainPanel.html",
+                controller: "mainController"
+            })
             .otherwise({ redirectTo: "/main" });
     });
 } ());
