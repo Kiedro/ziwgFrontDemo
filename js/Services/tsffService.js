@@ -12,33 +12,66 @@
             });
         }
 
-        var registerUser = function(userdata) {
+        var registerUser = function (userdata) {
             return $http({
                 url: rootUrl + "/api/ManageUser/register",
                 method: "POST",
-                data: $.param({Username: userdata.email, Password: userdata.password }),
+                data: $.param({ Username: userdata.email, Password: userdata.password }),
                 headers: { 'content-type': 'application/x-www-form-urlencoded' }
             }).then(function (response) {
                 return response.data.message;
-            });  
+            });
 
         }
 
 
-        var getUserTeams = function(userdata, token) {
+        var getUserTeams = function (token) {
             return $http({
                 url: rootUrl + "/api/user/userTeams",
                 method: "GET",
-                headers: { "Authorization": 'Bearer'  + token}
-            }).then(function (response)  {
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
                 return response.data.name;
+            });
+        };
+
+        var getWorkStatus = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/status",
+                method: "GET",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var startWork = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/start",
+                method: "POST",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var stopWork = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/stop",
+                method: "POST",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
             });
         };
 
         return {
             getToken: getToken,
             getUserTeams: getUserTeams,
-            registerUser: registerUser
+            registerUser: registerUser,
+            getWorkStatus: getWorkStatus,
+            startWork: startWork,
+            stopWork: stopWork
         };
 
 

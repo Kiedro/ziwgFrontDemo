@@ -1,4 +1,14 @@
-<h2>Użytkownik poprawnie zalogowany</h2>
+<h2>Zalogowano!</h2>
 <br/>
-<strong>Token:</strong>
-{{token}}
+
+<div ng-hide="hasActiveWork">
+    <button ng-click="startWork()" class="btn btn-success">Zacznij pracę</button>
+</div>
+
+<div ng-show="hasActiveWork">
+    <button ng-click="stopWork()" class="btn btn-warning">Skończ pracę</button>
+</div>
+
+<h3 ng-show="hasActiveWork">
+    Czas pracy: {{workedTime.hours}}:{{workedTime.minutes}}:{{workedTime.seconds}} 
+</h3>
