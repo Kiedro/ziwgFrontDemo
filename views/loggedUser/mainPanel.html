@@ -1,0 +1,18 @@
+<h2>Zalogowano pomyślnie!</h2>
+<br/>
+<div>
+    <a href="#/userTeams" class="btn btn-primary">Zarządzaj zespołami</a>
+</div> </br>
+<div ng-hide="hasActiveWork">
+    <button ng-click="startWork()" class="btn btn-success">Zacznij pracę</button>
+</div>
+
+<div ng-show="hasActiveWork">
+    <button ng-click="stopWork()" class="btn btn-warning">Skończ pracę</button>
+</div>
+
+<h3 ng-show="hasActiveWork">
+    Czas pracy: {{workedTime.hours}}:{{workedTime.minutes}}:{{workedTime.seconds}} 
+</h3>
+
+

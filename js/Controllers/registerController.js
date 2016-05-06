@@ -23,14 +23,10 @@
              var userdata = { 
 				      email: $scope.userRegisterEmail, 
 				      password: $scope.userRegisterPassword};
-
              tsffService.registerUser(userdata).then(onRegisterComplete, onError);
-             
         };
-
         $scope.listUserTeams = function(token) {};
     }
     var app = angular.module("ziwgApp"); 
     app.controller("registerController", ["$scope", "tsffService", "storage", registerController]);
-
 } ());

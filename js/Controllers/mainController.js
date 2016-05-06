@@ -1,0 +1,61 @@
+(function () {
+
+    var mainController = function ($scope, tsffService, storage, $interval) {
+
+        var status = tsffService.getWorkStatus(storage.getItem("token")).then(onSuccess, onError);
+        var startedWorkDate = Date.now();
+        var workedTime = { hours: 0, minutes: 0, seconds: 0 };
+        var stop;
+
+        function onSuccess(data) {
+            console.log(data);
+            $scope.hasActiveWork = data.activeWork;
+            if ($scope.hasActiveWork) {
+                startedWorkDate = new Date(data.started);
+                stop = $interval(calculateTimeDiff, 500);
+            }
+        }
+
+        function workStarted() {
+            $scope.hasActiveWork = true;
+            startedWorkDate = Date.now();
+            stop = $interval(calculateTimeDiff, 500);
+        }
+
+        function workFinished() {
+            $scope.hasActiveWork = false;
+        }
+
+        function startWork() {
+            tsffService.startWork(storage.getItem("token")).then(workStarted, onError);
+        }
+
+        function stopWork() {
+            tsffService.stopWork(storage.getItem("token")).then(workFinished, onError);
+        }
+
+        function calculateTimeDiff() {
+            var timeDiffms = Date.now() - startedWorkDate;
+            var x = timeDiffms / 1000;
+            workedTime.seconds = (x % 60) | 0;
+            x /= 60;
+            workedTime.minutes = x % 60 | 0;
+            x /= 60;
+            workedTime.hours = x % 60 | 0;
+        }
+
+        function onError(data) {
+            console.log(data);
+        }
+
+        $scope.hasActiveWork = false;
+        $scope.workedTime = workedTime;
+
+        $scope.startWork = startWork;
+        $scope.stopWork = stopWork;
+    }
+
+    var app = angular.module("ziwgApp");
+    app.controller("mainController", ["$scope", "tsffService", "storage", "$interval", mainController]);
+
+} ());

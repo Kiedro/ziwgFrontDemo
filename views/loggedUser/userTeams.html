@@ -1,0 +1,15 @@
+<div class="container" style="width:666px;  padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
+
+	<table ng-table="userDataController.tableParams" class="table table-striped show-filter="false">
+	    <tr ng-repeat="user in userdata">
+	   		<td title="'Leader e-mail'" filter="{ userName: 'text'}" sortable="'userName'">
+	            {{user.leader.userName}}</td>
+	        <td title="'Team name'" filter="{ name: 'text'}" sortable="'name'">
+	            {{user.name}}</td>
+	        <td title="'Premium'" filter="{ premium: 'text'}" sortable="'premium'">
+	            {{user.leader.premium}}</td>
+	    </tr>
+	</table>	
+	<br>
+    <a href="#/main">Wróć</a>
+</div>

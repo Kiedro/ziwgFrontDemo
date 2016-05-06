@@ -12,36 +12,75 @@
             });
         }
 
-        var registerUser = function(userdata) {
+        var registerUser = function (userdata) {
             return $http({
                 url: rootUrl + "/api/ManageUser/register",
                 method: "POST",
-                data: $.param({Username: userdata.email, Password: userdata.password }),
+                data: $.param({ Username: userdata.email, Password: userdata.password }),
                 headers: { 'content-type': 'application/x-www-form-urlencoded' }
             }).then(function (response) {
-                return response.data.status;
-            });  
-
-        }
-
-
-        var getUserTeams = function(userdata, token) {
-            return $http({
-                url: rootUrl + "/api/user/userTeams",
-                method: "GET",
-                headers: { "Authorization": 'Bearer'  + token}
-            }).then(function (response)  {
-                return response.data.name;
+                return response.data.message;
             });
         };
 
-        return {
-            getToken: getToken,
-            getUserTeams: getUserTeams,
-            registerUser: registerUser
+        var getAllTeamsInfo = function (token) {
+            return $http({
+                url: rootUrl + "/api/Teams",
+                method: "GET",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
         };
 
+        var getWorkStatus = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/status",
+                method: "GET",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };
 
+        var startWork = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/start",
+                method: "POST",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var stopWork = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/stop",
+                method: "POST",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var getUserDetails = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/status",
+                method: "GET",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };  
+
+        return {
+            getToken: getToken,
+            getAllTeamsInfo: getAllTeamsInfo,
+            registerUser: registerUser,
+            getWorkStatus: getWorkStatus,
+            startWork: startWork,
+            stopWork: stopWork
+        };
     };
 
     var module = angular.module("ziwgApp");

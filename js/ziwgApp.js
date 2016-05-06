@@ -16,8 +16,12 @@
                 controller: "registerController"
             })
             .when("/userTeams", {
-                templateUrl: "views/userTeams.html",
-                controller: "userTeamsController"
+                templateUrl: "views/loggedUser/userTeams.html",
+                controller: "userDataController"
+            })
+            .when("/logged", {
+                templateUrl: "views/loggedUser/mainPanel.html",
+                controller: "mainController"
             })
             .otherwise({ redirectTo: "/main" });
     });
