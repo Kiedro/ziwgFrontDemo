@@ -4,12 +4,13 @@
 
         var onRegisterComplete = function () {
             $('#spinnerDiv').hide(); 
-            console.log("Register complete.")
+            console.log("Register complete." + response.statusText)
           //  tsffService.getToken(userdata).then(onLoginCompete, onError);
         };
 
         var onError = function (response) {
-            alert("Błąd: " + response.statusText);
+            alert("Błąd: " + response.data);
+
             console.error(response);
             $('#spinnerDiv').hide(); 
         };
@@ -26,13 +27,9 @@
              var userdata = { 
 				      email: $scope.userRegisterEmail, 
 				      password: $scope.userRegisterPassword};
-
              tsffService.registerUser(userdata).then(onRegisterComplete, onError);
-             
         };
-
     }
     var app = angular.module("ziwgApp"); 
     app.controller("registerController", ["$scope", "tsffService", "storage", registerController]);
-
 } ());

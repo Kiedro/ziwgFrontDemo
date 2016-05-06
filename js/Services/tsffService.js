@@ -21,19 +21,57 @@
             }).then(function (response) {
                 return response.data.message;
             });
+        };
 
-        }
-
-
-        var getUserTeams = function (token) {
+        var getAllTeamsInfo = function (token) {
             return $http({
-                url: rootUrl + "/api/user/userTeams",
+                url: rootUrl + "/api/Teams",
                 method: "GET",
                 headers: { "Authorization": 'Bearer ' + token }
             }).then(function (response) {
-                return response.data.name;
+                return response.data;
             });
         };
+
+        var getWorkStatus = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/status",
+                method: "GET",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var getUserTeams = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/start",
+                method: "POST",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var stopWork = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/stop",
+                method: "POST",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var getUserDetails = function (token) {
+            return $http({
+                url: rootUrl + "/api/work/status",
+                method: "GET",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        };  
 
         var getWorkStatus = function (token) {
             return $http({
@@ -67,14 +105,12 @@
 
         return {
             getToken: getToken,
-            getUserTeams: getUserTeams,
+            getAllTeamsInfo: getAllTeamsInfo,
             registerUser: registerUser,
             getWorkStatus: getWorkStatus,
             startWork: startWork,
             stopWork: stopWork
         };
-
-
     };
 
     var module = angular.module("ziwgApp");

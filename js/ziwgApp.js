@@ -1,6 +1,6 @@
 
 (function () {
-    var app = angular.module("ziwgApp", ["ngRoute"]);
+    var app = angular.module("ziwgApp", ["ngRoute", "ngTable"]);
 
     app.config(function ($routeProvider) {
         $routeProvider
@@ -14,6 +14,14 @@
             .when("/register", {
                 templateUrl: "views/register.html",
                 controller: "registerController"
+            })
+            .when("/userTeams", {
+                templateUrl: "views/loggedUser/userTeams.html",
+                controller: "userDataController"
+            })
+            .when("/logged", {
+                templateUrl: "views/loggedUser/mainPanel.html",
+                controller: "mainController"
             })
             .when("/logged", {
                 templateUrl: "views/loggedUser/mainPanel.html",
