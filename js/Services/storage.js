@@ -9,9 +9,14 @@
             return localStorage.getItem(key);
         }
 
+        var removeItem = function (key) {
+            localStorage.removeItem("token");
+        }
+
         return {
             saveItem: saveItem,
-            getItem: getItem
+            getItem: getItem,
+            removeItem: removeItem
         };
     };
 
