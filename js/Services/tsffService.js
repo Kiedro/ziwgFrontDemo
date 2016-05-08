@@ -113,6 +113,16 @@
             }).then(function (response) {
                 return response.data;
             });
+        };
+
+        var createTeam = function (token, teamName) {
+            return $http({
+                url: rootUrl + "/api/teams?teamName=" + teamName,
+                method: "POST",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
         }
 
         return {
@@ -124,7 +134,8 @@
             stopWork: stopWork,
             getUserTeams: getUserTeams,
             getOwnedTeams: getOwnedTeams,
-            deleteTeam: deleteTeam
+            deleteTeam: deleteTeam,
+            createTeam: createTeam
         };
     };
 

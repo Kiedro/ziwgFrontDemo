@@ -27,6 +27,10 @@
                 templateUrl: "views/loggedUser/mainPanel.html",
                 controller: "mainController"
             })
+            .when("/createTeam", {
+                templateUrl: "views/loggedUser/createTeam.html",
+                controller: "manageTeamsController"
+            })
             .otherwise({ redirectTo: "/main" });
     });
 } ());
