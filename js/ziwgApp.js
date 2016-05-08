@@ -16,8 +16,8 @@
                 controller: "registerController"
             })
             .when("/userTeams", {
-                templateUrl: "views/loggedUser/userTeams.html",
-                controller: "userDataController"
+                templateUrl: "views/loggedUser/userOwnedTeams.html",
+                controller: "userOwnedTeamsController"
             })
             .when("/logged", {
                 templateUrl: "views/loggedUser/mainPanel.html",

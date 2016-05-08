@@ -45,23 +45,25 @@
 
         var getUserTeams = function (token) {
             return $http({
-                url: rootUrl + "/api/work/start",
-                method: "POST",
+                url: rootUrl + "/api/user/userTeams",
+                method: "GET",
                 headers: { "Authorization": 'Bearer ' + token }
             }).then(function (response) {
                 return response.data;
             });
         };
 
-        var stopWork = function (token) {
+        var getOwnedTeams = function (token) {
             return $http({
-                url: rootUrl + "/api/work/stop",
-                method: "POST",
+                url: rootUrl + "/api/user/ownedTeams",
+                method: "GET",
                 headers: { "Authorization": 'Bearer ' + token }
             }).then(function (response) {
                 return response.data;
             });
         };
+
+
 
         var getUserDetails = function (token) {
             return $http({
@@ -71,7 +73,7 @@
             }).then(function (response) {
                 return response.data;
             });
-        };  
+        };
 
         var getWorkStatus = function (token) {
             return $http({
@@ -103,13 +105,26 @@
             });
         };
 
+        var deleteTeam = function (token, teamId) {
+            return $http({
+                url: rootUrl + "/api/teams/" + teamId,
+                method: "DELETE",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
         return {
             getToken: getToken,
             getAllTeamsInfo: getAllTeamsInfo,
             registerUser: registerUser,
             getWorkStatus: getWorkStatus,
             startWork: startWork,
-            stopWork: stopWork
+            stopWork: stopWork,
+            getUserTeams: getUserTeams,
+            getOwnedTeams: getOwnedTeams,
+            deleteTeam: deleteTeam
         };
     };
 

@@ -3,7 +3,7 @@
     var mainController = function ($scope, tsffService, storage, $interval, $location) {
 
         (function () {
-            tsffService.getWorkStatus(storage.getItem("token")).then(onSuccess, onError);
+            tsffService.getWorkStatus(storage.getItem("token")).then(onInitSuccess, onError);
             console.log("init");
         }());
 
@@ -11,13 +11,15 @@
         var workedTime = { hours: 0, minutes: 0, seconds: 0 };
         var stop;
 
-        function onSuccess(data) {
+        function onInitSuccess(data) {
             console.log(data);
             $scope.hasActiveWork = data.activeWork;
             if ($scope.hasActiveWork) {
                 startedWorkDate = new Date(data.started);
                 stop = $interval(calculateTimeDiff, 500);
             }
+
+            tsffService.getUserTeams(storage.getItem("token")).then(function (data) { console.log(data) });
         }
 
         function workStarted() {
