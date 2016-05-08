@@ -1,7 +1,26 @@
 <div class="container" style="width:666px;  padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
 
+	<form role="form">
+		<div class="form-group">
+			<label for="teamName"><h3><span class="label label-primary">Dodaj nowy zespół jako lider</span></h3></label>
+			<input ng-model="newTeamName" type="text" class="form-control" id="teamName" placeholder="Podaj nazwę zespołu do dodania">
+		</div>
+		<button ng-click="addTeam()" type="submit" class="btn btn-success">Stwórz nowy zespół</button>
+	</form> <br></br>
+
+	<form role="form">
+		<div class="form-group">
+			<label for="teamName"><h3><span class="label label-primary">Usuń zespół, którego jesteś liderem</span></h3></label>
+			<input ng-model="delTeamName" type="text" class="form-control" id="delTeamName" placeholder="Podaj ID zespołu do usunięcia">
+		</div>
+		<button ng-click="delTeam()" type="submit" class="btn btn-success">Usuń zespół</button>
+	</form> <br></br>
+
+	<h3><span class="label label-primary">Lista zespołów i ich menadżerowie</span></h3>
 	<table ng-table="userDataController.tableParams" class="table table-striped show-filter="false">
 	    <tr ng-repeat="user in userdata">
+	    	<td title="'ID'" filter="{ userid: 'number'}" sortable="'userName'">
+	            {{user.id}}</td>
 	   		<td title="'Leader e-mail'" filter="{ userName: 'text'}" sortable="'userName'">
 	            {{user.leader.userName}}</td>
 	        <td title="'Team name'" filter="{ name: 'text'}" sortable="'name'">

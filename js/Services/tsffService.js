@@ -63,10 +63,20 @@
             });
         };
 
-        var getUserDetails = function (token) {
+        var addTeam = function (token, newTeamName) {
             return $http({
-                url: rootUrl + "/api/work/status",
-                method: "GET",
+                url: rootUrl + "/api/Teams?teamName=" + newTeamName,
+                method: "POST",
+                headers: {"Authorization": 'Bearer ' + token}
+            }).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var deleteTeam = function (token, delTeamName) {
+            return $http({
+                url: rootUrl + "/api/Teams?id=" + delTeamName,
+                method: "DELETE",
                 headers: { "Authorization": 'Bearer ' + token }
             }).then(function (response) {
                 return response.data;
@@ -79,7 +89,9 @@
             registerUser: registerUser,
             getWorkStatus: getWorkStatus,
             startWork: startWork,
-            stopWork: stopWork
+            stopWork: stopWork,
+            addTeam: addTeam,
+            deleteTeam: deleteTeam
         };
     };
 
