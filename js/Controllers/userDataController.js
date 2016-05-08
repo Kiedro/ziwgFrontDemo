@@ -26,10 +26,18 @@
 			tsffService.deleteTeam(storage.getItem("token"), teamId).then(getOwnedTeamsInfo, onError);
 		}
 
+		function getPremiumStatus() {
+            tsffService.hasPremium(storage.getItem("token")).then(function (data) { $scope.premium = data.premium; }, onError);
+        }
+
 		$scope.deleteTeam = deleteTeam;
+		$scope.premium;
         //nie wiedziałem, jak zrobić inaczej init();
-		// można jeszcze (function(){tu zawartosc funckji})(); - to się od razu wykona, ale tak jak zrobiłeś jest chyba czytelniej
-        getOwnedTeamsInfo();
+		function init() {
+			getOwnedTeamsInfo();
+			getPremiumStatus();
+		}
+		init();
 	};
 
 	var app = angular.module("ziwgApp");

@@ -1,8 +1,9 @@
 <div class="container" style="width:666px;  padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
-	<a class="btn btn-success" href="#/createTeam">Utwórz zespoł</a>
+	<a class="btn btn-success" href="#/createTeam" ng-show="premium">Utwórz zespoł</a>
+	<p ng-show="!premium">Brak statusu premium</p>
 	<br>
 	<table class="table table-striped show-filter=" false ">
-	    <tr ng-repeat="team in ownedTeams ">
+	    <tr ng-repeat="team in ownedTeams">
 	   		<!--<td title=" 'Leader e-mail' " filter="{ userName: 'text'} " sortable=" 'userName' ">
 	            {{user.leader.userName}}</td>-->
 	        <td title=" 'Team name' " filter="{ name: 'text'} " sortable=" 'name' ">

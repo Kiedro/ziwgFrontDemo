@@ -1,6 +1,6 @@
 (function () {
     var manageTeamsController = function ($scope, tsffService, storage, $location) {
-
+               
         var onCreateSuccess = function (token) {
             $location.path('/userTeams');
             $('#spinnerDiv').hide();
@@ -12,6 +12,8 @@
             $('#spinnerDiv').hide();
         }
 
+        
+
         $scope.createTeam = function (teamName) {
             // jeżeli nazwa nie jest pusta
             if (teamName) {
@@ -19,7 +21,7 @@
                 tsffService.createTeam(storage.getItem("token"), teamName).then(onCreateSuccess, onError);
             }
         };
-        $scope.text = "aaa";
+
     }
 
     var app = angular.module("ziwgApp");

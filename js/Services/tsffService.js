@@ -125,6 +125,26 @@
             });
         }
 
+        var hasPremium = function (token) {
+            return $http({
+                url: rootUrl + "/api/user/premium",
+                method: "GET",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
+        var setPremium = function (token, premium) {
+            return $http({
+                url: rootUrl + "/api/teams?teamName=" + teamName,
+                method: "POST",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
         return {
             getToken: getToken,
             getAllTeamsInfo: getAllTeamsInfo,
@@ -135,7 +155,8 @@
             getUserTeams: getUserTeams,
             getOwnedTeams: getOwnedTeams,
             deleteTeam: deleteTeam,
-            createTeam: createTeam
+            createTeam: createTeam,
+            hasPremium: hasPremium
         };
     };
 

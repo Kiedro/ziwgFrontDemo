@@ -19,9 +19,15 @@
                 stop = $interval(calculateTimeDiff, 500);
             }
 
-            tsffService.getUserTeams(storage.getItem("token")).then(function (data) { console.log(data) });
+            tsffService.getUserTeams(storage.getItem("token")).then(onUserTeamsFetched, onError);
         }
 
+
+        function onUserTeamsFetched(data) {
+            $scope.userTeams = data;
+            console.log("userTeams " + data);
+            console.log(data);
+        }
         function workStarted() {
             $scope.hasActiveWork = true;
             startedWorkDate = Date.now();
@@ -64,6 +70,8 @@
 
         $scope.startWork = startWork;
         $scope.stopWork = stopWork;
+
+        $scope.userTeams = {};
     }
 
     var app = angular.module("ziwgApp");

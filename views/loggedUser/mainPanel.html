@@ -1,8 +1,14 @@
 <h2>Zalogowano pomyślnie!</h2>
 <br/>
+
+<div ng-repeat="team in userTeams">
+    <div team-summary></div>
+</div>
+
 <div>
     <a href="#/userTeams" class="btn btn-primary">Zarządzaj zespołami</a>
-</div> </br>
+</div>
+</br>
 <div ng-hide="hasActiveWork">
     <button ng-click="startWork()" class="btn btn-success">Zacznij pracę</button>
 </div>
