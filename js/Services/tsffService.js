@@ -63,8 +63,6 @@
             });
         };
 
-
-
         var getUserDetails = function (token) {
             return $http({
                 url: rootUrl + "/api/work/status",
@@ -113,7 +111,7 @@
             }).then(function (response) {
                 return response.data;
             });
-        };
+        }
 
         var createTeam = function (token, teamName) {
             return $http({
@@ -145,6 +143,47 @@
             });
         }
 
+        var getTeamInfo = function (token, teamId) {
+            return $http({
+                url: rootUrl + "/api/teams/" + teamId,
+                method: "GET",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
+        var getUsers = function (token) {
+            return $http({
+                url: rootUrl + "/api/users",
+                method: "GET",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
+        var addUserToTeam = function (token, teamId, userId) {
+            return $http({
+                url: rootUrl + "/api/team/" + teamId + "/addUser/" + userId,
+                method: "PUT",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+        
+        var removeUserFromTeam = function (token, teamId, userId) {
+            return $http({
+                url: rootUrl + "/api/team/" + teamId + "/deleteUser/" + userId,
+                method: "DELETE",
+                headers: { "Authorization": 'Bearer ' + token }
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
+
         return {
             getToken: getToken,
             getAllTeamsInfo: getAllTeamsInfo,
@@ -156,7 +195,11 @@
             getOwnedTeams: getOwnedTeams,
             deleteTeam: deleteTeam,
             createTeam: createTeam,
-            hasPremium: hasPremium
+            hasPremium: hasPremium,
+            getTeamInfo: getTeamInfo,
+            getUsers: getUsers,
+            addUserToTeam: addUserToTeam,
+            removeUserFromTeam: removeUserFromTeam
         };
     };
 

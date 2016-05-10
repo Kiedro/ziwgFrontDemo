@@ -1,6 +1,6 @@
 
 (function () {
-    var app = angular.module("ziwgApp", ["ngRoute", "ngTable"]);
+    var app = angular.module("ziwgApp", ["ngRoute", "ngTable", "ngAnimate", "ui.bootstrap"]);
 
     app.config(function ($routeProvider) {
         $routeProvider
@@ -30,6 +30,10 @@
             .when("/createTeam", {
                 templateUrl: "views/loggedUser/createTeam.html",
                 controller: "manageTeamsController"
+            })
+            .when("/team/:teamId", {
+                templateUrl: "views/loggedUser/team/team.html",
+                controller: "teamController"
             })
             .otherwise({ redirectTo: "/main" });
     });

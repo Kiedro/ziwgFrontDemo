@@ -1,0 +1,37 @@
+<h2>{{team.name}}</h3>
+
+<table class="table table-striped show-filter=" false ">
+	<button class="btn btn-success" ng-click="openAddUserModal()">Dodaj użytkownika</button>
+	    <tr ng-repeat="member in team.members">
+	   		<!--<td title=" 'Leader e-mail' " filter="{ userName: 'text'} " sortable=" 'userName' ">
+	            {{user.leader.userName}}</td>-->
+	        <td>{{member.email}}</td>
+			
+	       	<!--<td><button class="btn btn-danger " ng-click="deleteTeam(team.id) ">Usuń</button></td>-->
+			   	       	<td><button class="btn btn-danger" ng-click="removeUser(member.id)">Usuń</button></td>
+
+	    </tr>
+	</table>		
+    
+<a href="#/userTeams ">Wróć</a>
+
+
+
+
+<script type="text/ng-template" id="addUserModal.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Dodaj użytkownika</h3>
+	</div>
+	<div class="modal-body">
+		<ul>
+			<li ng-repeat="user in users">
+				<a href="#" ng-click="$event.preventDefault(); selected.user = user;">{{ user.email }}</a>
+			</li>
+		</ul>
+		Wybrany: <b>{{ selected.user.email }}</b>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()">Dodaj</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Anuluj</button>
+	</div>
+</script>
