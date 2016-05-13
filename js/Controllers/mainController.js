@@ -15,7 +15,12 @@
             console.log(data);
             $scope.hasActiveWork = data.activeWork;
             if ($scope.hasActiveWork) {
-                startedWorkDate = new Date(data.started);
+                startedWorkDate = new Date(data.started);//new Date(Date.parse(data.started)).toUTCString();
+                // javascript traktuje przesłąną datę jako czas GMT,automatycznie korygująć go do lokalnej strefy czasoewj
+                // abywyśiwetlany czas był poprawny należy wyliczyć iość dodanych minut i odjąć tę wartość
+                var timeZoneDiff = startedWorkDate.getTimezoneOffset();
+                startedWorkDate = new Date(startedWorkDate.getTime() + timeZoneDiff * 60000);
+
                 stop = $interval(calculateTimeDiff, 500);
             }
 
@@ -47,7 +52,9 @@
         }
 
         function calculateTimeDiff() {
-            var timeDiffms = Date.now() - startedWorkDate;
+           // debugger;
+            var timeDiffms = Date.now()- startedWorkDate;
+            
             var x = timeDiffms / 1000;
             workedTime.seconds = (x % 60) | 0;
             x /= 60;
