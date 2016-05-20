@@ -35,6 +35,10 @@
                 templateUrl: "views/loggedUser/team/team.html",
                 controller: "teamController"
             })
+            .when("/team/:teamId/tasks", {
+                templateUrl: "views/loggedUser/tasks/tasks.html",
+                controller: "taskController"
+            })
             .otherwise({ redirectTo: "/main" });
     });
 } ());
