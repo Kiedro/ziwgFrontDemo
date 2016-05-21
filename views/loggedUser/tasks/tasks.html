@@ -1,23 +1,31 @@
-<h2>Taski?</h2>
+<h2>Zadania</h2>
 
+<button class="btn btn-success" ng-click="openAddTaskModal()">Dodaj zadanie</button>
 <div class="container" style="width:666px;  padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
-
-
 	<table class="table table-striped show-filter=" false ">
 	    <tr ng-repeat="task in tasks">
 	   		<!--<td title=" 'Leader e-mail' " filter="{ userName: 'text'} " sortable=" 'userName' ">
 	            {{user.leader.userName}}</td>-->
-	        <td title=" 'Task name' "sortable=" 'name' ">
-	            {{task.name}}</td>
-	 <td title=" 'Task description' ">
-	            {{task.description}}</td>
-			
+	        <td title=" 'Task name' "sortable=" 'name' "> {{task.name}}</td>
+	 		<td title=" 'Task description' "> {{task.description}}</td>	
 	    </tr>
 	</table>		
 	<br>
     <a href="#/main ">Wróć</a>
 </div>
 
-<input type="text" ng-model="description">
-<input type="text" ng-model="name">
-<button ng-click="newTaskButtonClick()">Nowy task!</button>
+
+
+<script type="text/ng-template" id="addTaskModal.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Dodaj zadanie!</h3>
+	</div>
+	<div class="modal-body">
+		<input type="text" ng-model="description">
+		<input type="text" ng-model="name">
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()">Dodaj</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Anuluj</button>
+	</div>
+</script>

@@ -1,24 +1,46 @@
 <h2>Zalogowano pomyślnie!</h2>
 <br/>
 
-<div ng-repeat="team in userTeams">
+<!--<div ng-repeat="team in userTeams">
     <div team-summary></div>
-</div>
+</div>-->
 
 <div>
     <a href="#/userTeams" class="btn btn-primary">Zarządzaj zespołami</a>
 </div>
 </br>
-<div ng-hide="hasActiveWork">
-    <button ng-click="startWork()" class="btn btn-success">Zacznij pracę</button>
+
+<md-content flex-gt-md="50">
+    <md-tabs md-dynamic-height md-border-bottom >
+        <md-tab label="{{team.name}}" ng-repeat="team in userTeams">
+        <md-content class="md-padding">
+          <h3 >{{team.name}} {{team.id}}</h3>
+          <p>In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+</md-content>
+
+
+<div flex-xs flex-gt-md="50" layout="column">
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Status pracy</span>
+                <span class="md-subhead" ng-show="hasActiveWork">
+                    Czas pracy: {{workedTime.hours}}:{{workedTime.minutes}}:{{workedTime.seconds}}
+               </span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <div class="md-media-sm card-media"></div>
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="startWork()" ng-hide="hasActiveWork">Zacznij pracę</md-button>
+            <md-button class="raised" ng-click="stopWork()" ng-show="hasActiveWork">Skończ pracę</md-button>
+        </md-card-actions>
+    </md-card>
 </div>
 
-<div ng-show="hasActiveWork">
-    <button ng-click="stopWork()" class="btn btn-warning">Skończ pracę</button>
-</div>
 
-<h3 ng-show="hasActiveWork">
-    Czas pracy: {{workedTime.hours}}:{{workedTime.minutes}}:{{workedTime.seconds}} 
-</h3>
-
-<button ng-click="logout()" class="btn btn-dangerous">Wyloguj</button>
+<md-button ng-click="logout()" class="md-raised">Wyloguj</md-button>
