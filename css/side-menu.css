@@ -1,5 +1,5 @@
 body {
-    color: #333;
+    color: #222;
 }
 
 .pure-img-responsive {
@@ -48,7 +48,7 @@ The content `<div>` is where all your content goes.
 
 .header {
      margin: 0;
-     color: #222;
+     color: #111;
      text-align: center;
      padding: 1.5em 2em 0;
      border-bottom: 1px solid #777;
@@ -60,7 +60,7 @@ The content `<div>` is where all your content goes.
     }
      .header h2 {
         font-weight: 300;
-        color: #222;
+        color: #111;
         padding: 0;
         margin-top: 0;
     }
@@ -68,33 +68,62 @@ The content `<div>` is where all your content goes.
 .content-subhead {
     margin: 50px 0 20px 0;
     font-weight: 300;
-    color: #222;
+    color: #111;
 }
 
- .button-success,
-        .button-error,
-        .button-warning,
-        .button-secondary {
-            color: white;
-            border-radius: 4px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-        }
+[class^="img"] {
+    display: inline-block;
+    /*
+        Uncomment to see div dimensions
+    
+        border: 1px dotted red;
+    */
+}
 
-        .button-success {
-            background: rgb(28, 184, 65); /* this is a green */
-        }
+[class^="img"] img {
+    display: block;
+}
 
-        .button-error {
-            background: rgb(202, 60, 60); /* this is a maroon */
-        }
+.img-100 img {
+    max-width: 100%;
+}
 
-        .button-warning {
-            background: rgb(223, 117, 20); /* this is an orange */
-        }
+.img-75 img {
+    max-width: 75%;
+}
 
-        .button-secondary {
-            background: rgb(66, 184, 221); /* this is a light blue */
-        }
+.img-50 img {
+    max-width: 50%;
+}
+
+.img-25 img {
+    max-width: 33%;
+}
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+    background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+}
 
 
 

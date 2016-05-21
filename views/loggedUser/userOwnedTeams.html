@@ -1,18 +1,25 @@
-<div class="container" style="width:666px;  padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
-	<a class="btn btn-success" href="#/createTeam" ng-show="premium">Utwórz zespoł</a>
-	<p ng-show="!premium">Brak statusu premium</p>
+<div class="content">
+	<h2 class="content-subhead">Twoje zespoły</h2>
+	Tutaj możesz stworzyć lub usunąć zespół, a także zarządzać jego członkami.<br>
+
+	<p ng-show="!premium"><font color="#e11a1a">Brak statusu premium</font></p>
+
 	<br>
-	<table class="table table-striped show-filter=" false ">
-	    <tr ng-repeat="team in ownedTeams">
+	<table class="pure-table pure-table-horizontal">
+		<tr ng-repeat="team in ownedTeams">
 	   		<!--<td title=" 'Leader e-mail' " filter="{ userName: 'text'} " sortable=" 'userName' ">
-	            {{user.leader.userName}}</td>-->
-	        <td title=" 'Team name' " filter="{ name: 'text'} " sortable=" 'name' ">
-	            {{team.name}}</td>
-				<td><a href="#/team/{{team.id}}" class="btn btn-info">Członkowie</a></td>
-				<td>|</td>
-	       	<td><button class="btn btn-danger " ng-click="deleteTeam(team.id) ">Usuń</button></td>
-	    </tr>
-	</table>		
-	<br>
-    <a href="#/main ">Wróć</a>
+	   		{{user.leader.userName}}</td>-->
+	   		<td title=" 'Team name' " filter="{ name: 'text'} " sortable=" 'name' ">
+	   			{{team.name}}</td>
+	   			<td><a href="#/team/{{team.id}}" class="btn btn-info">		Członkowie</a></td>
+	   			<td>|</td>
+	   			<td><button class="button-error pure-button" ng-click="deleteTeam(team.id) ">Usuń</button></td>
+	   		</tr>
+	</table>
+	<br>	
+	<a class="button-success pure-button" href="#/createTeam" ng-show="premium">Utwórz zespoł</a>
+	<br></br>
+    <div class="img-25">
+    	<a href="#/logged"><img src="assets/MB__back.png" alt="Go back"></a>
+    </div>
 </div>

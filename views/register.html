@@ -4,31 +4,31 @@
         <p>Zaloguj się lub zarejestruj, aby kontynuować. <br>Hasło powinno składać się z minimum sześciu znaków. Oba hasła muszą się zgadzać.</p>
 
         <fieldset>
-        <div class="pure-control-group">
-            <label for="inputEmail">Adres e-mail</label>
-            <input id="inputEmail" type="email" ng-model="userRegisterEmail" placeholder="Twój adres e-mail" required autofocus>
-        </div>
+            <div class="pure-control-group">
+                <label for="inputEmail">Adres e-mail</label>
+                <input id="inputEmail" type="email" ng-model="userRegisterEmail" placeholder="Twój adres e-mail" required autofocus>
+            </div>
 
-        <div class="pure-control-group">
-            <label for="inputPassword">Hasło</label>
-            <input id="inputPassword" type="password" ng-model="userRegisterPassword" placeholder="Wpisz hasło (min. 6 znaków)" required>
-        </div>
+            <div class="pure-control-group">
+                <label for="inputPassword">Hasło</label>
+                <input id="inputPassword" type="password" ng-model="userRegisterPassword" placeholder="Wpisz hasło (min. 6 znaków)" required>
+            </div>
 
-        <div class="pure-control-group">
-            <label for="inputConfPassword">Powtórz hasło</label>
-            <input id="inputConfPassword" type="password" ng-model="userRegisterConfPassword" placeholder="Oba hasła muszą być równe" required>
-        </div>
+            <div class="pure-control-group">
+                <label for="inputConfPassword">Powtórz hasło</label>
+                <input id="inputConfPassword" type="password" ng-model="userRegisterConfPassword" placeholder="Oba hasła muszą być równe" required>
+            </div>
 
-        <p><small ng-hide="showRegisterBtn()">Hasła różnią się od siebie, bądź są zbyt krótkie (min. 6 znaków)</small></p>
+            <p><small ng-hide="showRegisterBtn()">Hasła różnią się od siebie, bądź są zbyt krótkie (min. 6 znaków)</small></p>
 
-        <div class="pure-g">
-           <div class="pure-u-1-4"></div>
-           <div class="pure-u-1-4">
+            <div class="pure-g">
+             <div class="pure-u-1-4"></div>
+             <div class="pure-u-1-4">
                 <button class="button-success pure-button"  ng-click="register()" ng-show="showRegisterBtn()">Register!</button>
-           </div>
+            </div>
         </div>
-
     </form>
-    <br>
-    <a href="#/main">Wróć</a>
+    <div class="img-25">
+    	<a href="#/main"><img src="assets/MB__back.png" alt="Go back"></a>
+    </div>
 </div>
