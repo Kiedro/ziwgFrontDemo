@@ -1,6 +1,11 @@
-<form class="form-signin">
-    <h2 class="form-signin-heading">Utwórz zespoł</h2>
-    <label for="inputTeamName" class="sr-only">Nazwa zespołu</label>
-    <input type="text" id="inputTeamName" ng-model="teamName" class="form-control" placeholder="Nazwa zespołu" required autofocus>
-    <button class="btn btn-lg btn-primary btn-block" ng-click="createTeam(teamName)">Utwórz zespoł</button>
-</form>
+<div class="content">
+	<form class="pure-form pure-form-aligned">
+	    <h2 class="content-subhead">Utwórz zespoł</h2>
+	    <label for="inputTeamName" class="sr-only"><strong>Podaj nazwę zespołu</strong>, który chcesz utworzyć</label><br>
+	    <input type="text" id="inputTeamName" ng-model="teamName" class="form-control" placeholder="Nazwa zespołu" required autofocus><br></br>
+	    <button class="button-secondary pure-button" ng-click="createTeam(teamName)">Utwórz zespoł</button><br></br>
+	</form>
+	<div class="img-25">
+		<a href="#/userTeams"><img src="assets/MB__back.png" alt="Go back"></a>
+	</div>
+</div>

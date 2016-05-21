@@ -1,15 +1,32 @@
-<div>
-    <form class="form-signin" style="width:500px;  padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;" >
-        <h2 class="form-signin-heading">Logowanie</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" ng-model="userLoginEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" ng-model="userLoginPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+<div class="content">
+    <form class="pure-form pure-form-aligned">
+        <h2>Zaloguj się</h2>
+        <p>Zaloguj się, używając adresu e-mail oraz hasła, które zarejestrowałeś wcześniej w systemie.</p><br>
 
-        <p><small ng-show="(userLoginPassword.length <=5)">Given password is too short! (min. 6 chars)</small></p>
-        <button class="btn btn-lg btn-primary btn-block" ng-click="login()" 
-        ng-hide= "(userLoginPassword == '') || (userLoginPassword.length <=5)">Login!</button>
+        <fieldset>
+        <div class="pure-control-group">
+            <label for="inputEmail">Adres e-mail</label>
+            <input id="inputEmail" type="email" ng-model="userLoginEmail" placeholder="Twój adres e-mail" required autofocus>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="inputPassword">Hasło</label>
+            <input id="inputPassword" type="password" ng-model="userLoginPassword" placeholder="Wpisz hasło (min. 6 znaków)" required>
+        </div>
+
+        <p><small ng-show= "(userLoginPassword == '') || (userLoginPassword.length <=5)">Podane hasło jest za krótkie (min. 6 znaków).</small></p>
+
+        <div class="pure-g">
+           <div class="pure-u-1-4"></div>
+           <div class="pure-u-1-4">
+                <button class="button-success pure-button" ng-hide="(userLoginPassword == '') || (userLoginPassword.length <=5)" ng-click="login()" ng-show="showRegisterBtn()">Zaloguj!</button>
+           </div>
+        </div>
+
     </form>
     <br>
-    <a href="#/main">Wróć</a>
+        <div class="img-25">
+    	<a href="#/main"><img src="assets/MB__back.png" alt="Go back"></a>
+    </div>
 </div>
+          

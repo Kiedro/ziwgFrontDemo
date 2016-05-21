@@ -10,9 +10,7 @@
             alert("Błąd: " + response.statusText);
             console.error(response);
             $('#spinnerDiv').hide();
-        }
-
-        
+        }        
 
         $scope.createTeam = function (teamName) {
             // jeżeli nazwa nie jest pusta
@@ -21,7 +19,6 @@
                 tsffService.createTeam(storage.getItem("token"), teamName).then(onCreateSuccess, onError);
             }
         };
-
     }
 
     var app = angular.module("ziwgApp");

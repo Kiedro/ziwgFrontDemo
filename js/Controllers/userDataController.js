@@ -32,7 +32,7 @@
 
 		$scope.deleteTeam = deleteTeam;
 		$scope.premium;
-        //nie wiedziałem, jak zrobić inaczej init();
+		
 		function init() {
 			getOwnedTeamsInfo();
 			getPremiumStatus();
