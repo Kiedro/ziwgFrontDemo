@@ -28,14 +28,12 @@
         } ());
         //////////////////////////////////
 
-
-        $scope.openAddUserModal = function (size) {
+        $scope.openAddUserModal = function () {
 
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: 'addUserModal.html',
                 controller: 'ModalInstanceCtrl',
-                size: size,
                 resolve: {
                     teamId: function () {
                         return teamId;
@@ -51,12 +49,6 @@
                 $log.info('Modal dismissed at: ' + new Date());
             });
         };
-
-        $scope.toggleAnimation = function () {
-            $scope.animationsEnabled = !$scope.animationsEnabled;
-        };
-
-        //////////////////////////////////        
     }
 
     var app = angular.module("ziwgApp");

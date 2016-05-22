@@ -1,6 +1,6 @@
 
 (function () {
-    var app = angular.module("ziwgApp", ["ngRoute", "ngTable", "ngAnimate"]);
+    var app = angular.module("ziwgApp", ["ngRoute", "ngTable", "ngAnimate", "ui.bootstrap", "ngAria", "ngMaterial"]);
 
     app.config(function ($routeProvider) {
         $routeProvider
