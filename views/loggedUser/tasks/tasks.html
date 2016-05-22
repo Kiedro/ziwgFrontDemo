@@ -23,8 +23,11 @@
 		<h3 class="modal-title">Dodaj zadanie!</h3>
 	</div>
 	<div class="modal-body">
-		<input type="text" ng-model="description">
-		<input type="text" ng-model="name">
+		<label for="name">Nazwa</label>
+		<input type="text" name="name" ng-model="name">
+		<br/>
+		<label for="description">Opis</label>
+		<input type="text" name="description" ng-model="description">
 	</div>
 	<div class="modal-footer">
 		<button class="btn btn-primary" type="button" ng-click="ok()">Dodaj</button>

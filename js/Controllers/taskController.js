@@ -53,7 +53,7 @@
                 // użytkownika jeszcze nie będzie i trzeba wtedy odświeżyć stronę
                 setTimeout(getAllTasks, 1000);
             }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
+                // on modal dismis?
             });
         };
     }
@@ -63,33 +63,29 @@
 } ());
 
 
-angular.module('ziwgApp').controller('TaskModalInstanceCtrl', function ($scope, $uibModalInstance, taskService, storage, teamId) {
+angular.module('ziwgApp').controller('TaskModalInstanceCtrl', function ($scope, $uibModalInstance, taskService, tsffService, storage, teamId) {
     function init() {
        // tsffService.getUsers(storage.getItem("token")).then(onSuccess, onError);
     }
     init();
 
     function onSuccess(data) {
-        // console.log(data);
-        // console.log("teamID:" + teamId);
-        $scope.users = data;
     }
     function onError(response) {
         console.error(response);
     }
-    $scope.users = [];
-    $scope.selected = {
-        // userId: ""
-        user: {}
-    };
+
 
     $scope.ok = function () {
-       // console.log(teamId, $scope.selected.userId);
-        tsffService.addUserToTeam(storage.getItem("token"), teamId, $scope.selected.user.id)
-        $uibModalInstance.close($scope.selectedUserId);
+        var task = { teamId: teamId, name: $scope.name, description: $scope.description, completed: false };
+        taskService.createTask(storage.getItem("token"), task)
+        $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
+
+    $scope.name;
+    $scope.description;
 });

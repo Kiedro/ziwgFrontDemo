@@ -3,20 +3,20 @@
 
 	<table class="pure-table pure-table-horizontal">
 		<button class="button-success pure-button" ng-click="openAddUserModal()">Dodaj użytkownika</button>
-		    <tr ng-repeat="member in team.members">
-		   		<!--<td title=" 'Leader e-mail' " filter="{ userName: 'text'} " sortable=" 'userName' ">
+		<tr ng-repeat="member in team.members">
+			<!--<td title=" 'Leader e-mail' " filter="{ userName: 'text'} " sortable=" 'userName' ">
 		            {{user.leader.userName}}</td>-->
-		        <td>{{member.email}}</td>
-				
-		       	<!--<td><button class="btn btn-danger " ng-click="deleteTeam(team.id) ">Usuń</button></td>-->
-				   	       	<td><button class="btn btn-danger" ng-click="removeUser(member.id)">Usuń</button></td>
+			<td>{{member.email}}</td>
 
-		    </tr>
+			<!--<td><button class="btn btn-danger " ng-click="deleteTeam(team.id) ">Usuń</button></td>-->
+			<td><button class="btn btn-danger" ng-click="removeUser(member.id)">Usuń</button></td>
+
+		</tr>
 	</table>
-	<br>		
+	<br>
 	<div class="img-25">
-    	<a href="#/userTeams"><img src="assets/MB__back.png" alt="Go back"></a>
-    </div>    
+		<a href="#/userTeams"><img src="assets/MB__back.png" alt="Go back"></a>
+	</div>
 
 
 
@@ -29,7 +29,7 @@
 		<div class="modal-body">
 			<ul>
 				<li ng-repeat="user in users">
-					<a href="#" ng-click="$event.preventDefault(); selected.user = user;">{{ user.email }}</a>
+					<button class="pure-button" ng-click="$event.preventDefault(); selected.user = user;">{{ user.email }}</button>
 				</li>
 			</ul>
 			Wybrany: <b>{{ selected.user.email }}</b>
