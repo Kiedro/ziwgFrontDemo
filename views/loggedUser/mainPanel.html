@@ -1,60 +1,59 @@
 <div class="content">
-	<h2 class="content-subhead">Zalogowano <font color="#4CAF50">pomyślnie!</font></h2>
-	Teraz możesz <strong>zarejestrować swój czas pracy</strong>.</br> Wybierz zespół oraz zadanie, nad którym aktualnie pracujesz i kliknij "Rozpocznij pracę".<br></br> 
-	Po rozpoczęciu pracy możesz w dowolnej chwili zamknąć okno przeglądarki, a <strong>Twój czas nadal będzie naliczany</strong>.<br>
-	Zakończyć pracę możesz z poziomu telefonu komórkowego lub przeglądarki internetowej.<br></br>
+    <h2 class="content-subhead">Zalogowano <font color="#4CAF50">pomyślnie!</font></h2> Teraz możesz <strong>zarejestrować swój czas pracy</strong>.</br> Wybierz zespół oraz zadanie, nad którym aktualnie
+    pracujesz i kliknij "Rozpocznij pracę".<br></br>
+    Po rozpoczęciu pracy możesz w dowolnej chwili zamknąć okno przeglądarki, a <strong>Twój czas nadal będzie naliczany</strong>.<br>    Zakończyć pracę możesz z poziomu telefonu komórkowego lub przeglądarki internetowej.<br></br>
 
-	<a href="#/userTeams" class="button-secondary pure-button">Zarządzaj zespołami</a><br></br>
+    <a href="#/userTeams" class="button-secondary pure-button">Zarządzaj zespołami</a><br></br>
 
-<md-content flex-gt-md="50">
-    <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab label="{{team.name}}" ng-repeat="team in userTeams" ng-click="cleanSelection()">
-            <h3>{{team.name}}</h3>
-            <md-content class="md-padding" layout-xs="column" layout="row">
-                <div flex-xs flex-gt-xs="40" layout="column" ng-repeat="task in team.tasks">
-                    <md-card ng-class="{true: 'selected-task', false: ''}[task.selected]">
-                        <md-card-title>
-                            <md-card-title-text>
-                                <span class="md-headline">{{task.name}}</span>
-                    </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <span class="md-">{{task.description}}</span>
-                    </md-card-content>
-                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button ng-click="selectTask(team.id, task.id);">Wybierz zadanie</md-button>
-                    </md-card-actions>
-                    </md-card>
-                </div>
-            </md-content>
-        </md-tab>
-    </md-tabs>
-</md-content>
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="{{team.name}}" ng-repeat="team in userTeams" ng-click="cleanSelection()">
+                <h3>{{team.name}}</h3>
+                <md-content class="md-padding" layout-xs="column" layout="row">
+                    <div flex-xs flex-gt-xs="40" layout="column" ng-repeat="task in team.tasks">
+                        <md-card ng-class="{true: 'selected-task', false: ''}[task.selected]">
+                            <md-card-title>
+                                <md-card-title-text>
+                                    <span class="md-headline">{{task.name}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content>
+                                <span class="md-">{{task.description}}</span>
+                            </md-card-content>
+                            <md-card-actions layout="row" layout-align="end center">
+                                <md-button ng-click="selectTask(team.id, task.id);">Wybierz zadanie</md-button>
+                            </md-card-actions>
+                        </md-card>
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
 
 
-<div flex-xs flex-gt-md="50" layout="column">
-    <md-card>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Status pracy</span>
-                <span class="md-subhead" ng-show="hasActiveWork">
+    <div flex-xs layout="column">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Status pracy</span>
+                    <span class="md-subhead" ng-show="hasActiveWork">
                     Czas pracy: {{workedTime.hours}}:{{workedTime.minutes}}:{{workedTime.seconds}}
                </span>
-            </md-card-title-text>
-            <md-card-title-media>
-                <div class="md-media-sm card-media"></div>
-            </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-            <md-button ng-click="startWork()" ng-hide="hasActiveWork">Zacznij pracę</md-button>
-            <md-button class="raised" ng-click="stopWork()" ng-show="hasActiveWork">Skończ pracę</md-button>
-        </md-card-actions>
-    </md-card>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-sm card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="startWork()" ng-hide="hasActiveWork">Zacznij pracę</md-button>
+                <md-button class="raised" ng-click="stopWork()" ng-show="hasActiveWork">Skończ pracę</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+
+
+    <button ng-click="logout()" class="button-error pure-button">Wyloguj</button><br></br>
+    <div class="img-25">
+        <a href="#/main"><img src="assets/MB__back.png" alt="Go back"></a>
+    </div>
 </div>
-
-
-			<button ng-click="logout()" class="button-error pure-button">Wyloguj</button><br></br>
-			<div class="img-25">
-				<a href="#/main"><img src="assets/MB__back.png" alt="Go back"></a>
-			</div>
-		</div>
