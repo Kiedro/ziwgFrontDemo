@@ -1,23 +1,33 @@
 <h2>Zalogowano pomyślnie!</h2>
 <br/>
 
-<!--<div ng-repeat="team in userTeams">
-    <div team-summary></div>
-</div>-->
-
 <div>
     <a href="#/userTeams" class="btn btn-primary">Zarządzaj zespołami</a>
 </div>
 </br>
 
 <md-content flex-gt-md="50">
-    <md-tabs md-dynamic-height md-border-bottom >
-        <md-tab label="{{team.name}}" ng-repeat="team in userTeams">
-        <md-content class="md-padding">
-          <h3 >{{team.name}} {{team.id}}</h3>
-          <p>In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
-        </md-content>
-      </md-tab>
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="{{team.name}}" ng-repeat="team in userTeams" ng-click="cleanSelection()">
+            <h3>{{team.name}}</h3>
+            <md-content class="md-padding" layout-xs="column" layout="row">
+                <div flex-xs flex-gt-xs="40" layout="column" ng-repeat="task in team.tasks">
+                    <md-card ng-class="{true: 'selected-task', false: ''}[task.selected]">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">{{task.name}}</span>
+                    </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <span class="md-">{{task.description}}</span>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-click="selectTask(team.id, task.id);">Wybierz zadanie</md-button>
+                    </md-card-actions>
+                    </md-card>
+                </div>
+            </md-content>
+        </md-tab>
     </md-tabs>
 </md-content>
 

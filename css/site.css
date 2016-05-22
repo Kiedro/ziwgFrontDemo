@@ -12,3 +12,11 @@
 .spinner {
     top: 30%;  
 }
+
+md-card{
+       transition: background-color 1000ms linear;
+}
+
+.selected-task{
+    background-color: grey;
+}
