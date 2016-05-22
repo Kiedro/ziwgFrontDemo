@@ -20,3 +20,10 @@ md-card{
 .selected-task{
     background-color: grey;
 }
+
+a.md-default-theme:not(.md-button), a:not(.md-button) {
+    color: white;
+}
+a.md-default-theme:not(.md-button):hover, a:not(.md-button):hover {
+    color: white;
+}
