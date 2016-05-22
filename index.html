@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pl" ng-app="ziwgApp">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
-  
+
 
 
 
@@ -41,6 +42,8 @@
     <script src="js/Controllers/manageTeamsController.js"></script>
     <script src="js/Directives/teamSummary.js"></script>
     <script src="js/Controllers/teamController.js"></script>
+    <script src="js/Controllers/premiumController.js"></script>
+
     <script>
         var rootUrl = "http://tsff.azurewebsites.net";
         //var rootUrl = "http://localhost:27843/";
@@ -58,25 +61,25 @@
             <div class="pure-menu">
                 <a class="pure-menu-heading" href="#/index">TSFF</a>
                 <li class="pure-menu-item menu-item-divided">
-                <ul class="pure-menu-list">
-                    <li class="pure-menu-item"><a href="#/login" class="pure-menu-link">Zaloguj</a></li>
-                    <li class="pure-menu-item"><a href="#/register" class="pure-menu-link">Zarejestruj</a></li>
-                    <li class="pure-menu-item menu-item-divided">
-                    <li class="pure-menu-item" class="menu-item-divided pure-menu-selected">
-                    <li class="pure-menu-item"><a href="#/logged" class="pure-menu-link">Panel główny</a></li>
-                    <li class="pure-menu-item"><a href="#/userTeams" class="pure-menu-link">Twoje zespoly</a></li>
-                    <li class="pure-menu-item menu-item-divided">    
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Kup Premium!</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Kontakt</a></li>
-                    <li class="pure-menu-item menu-item-divided">
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link" onclick="localStorage.removeItem('token');">Wyloguj</a></li>   
-                    <li class="pure-menu-item menu-item-divided">
-                </ul>
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a href="#/login" class="pure-menu-link">Zaloguj</a></li>
+                        <li class="pure-menu-item"><a href="#/register" class="pure-menu-link">Zarejestruj</a></li>
+                        <li class="pure-menu-item menu-item-divided">
+                            <li class="pure-menu-item" class="menu-item-divided pure-menu-selected">
+                                <li class="pure-menu-item"><a href="#/logged" class="pure-menu-link">Panel główny</a></li>
+                                <li class="pure-menu-item"><a href="#/userTeams" class="pure-menu-link">Twoje zespoly</a></li>
+                                <li class="pure-menu-item menu-item-divided">
+                                    <li class="pure-menu-item"><a href="#/premium" class="pure-menu-link">Kup Premium!</a></li>
+                                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Kontakt</a></li>
+                                    <li class="pure-menu-item menu-item-divided">
+                                        <li class="pure-menu-item"><a href="#" class="pure-menu-link" onclick="localStorage.removeItem('token');">Wyloguj</a></li>
+                                        <li class="pure-menu-item menu-item-divided">
+                    </ul>
             </div>
         </div>
 
         <div id="main">
-            
+
             <div class="header">
                 <h1>TSFF <img src="assets/logo.png" alt="Logo"></h1>
                 <h2>Task System For Freelancers</h2>
@@ -96,7 +99,7 @@
             <div class="sk-cube3 sk-cube"></div>
         </div>
     </div>
-    
+
     <script src="js/ui.js"></script>
     <script>
         $('#spinnerDiv').hide();

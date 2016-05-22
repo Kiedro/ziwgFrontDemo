@@ -35,6 +35,10 @@
                 templateUrl: "views/loggedUser/tasks/tasks.html",
                 controller: "taskController"
             })
+            .when("/premium", {
+                templateUrl: "views/premium.html",
+                controller: "premiumController"
+            })
             .otherwise({ redirectTo: "/main" });
     });
 } ());

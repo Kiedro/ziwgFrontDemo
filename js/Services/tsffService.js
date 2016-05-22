@@ -135,7 +135,7 @@
 
         var setPremium = function (token, premium) {
             return $http({
-                url: rootUrl + "/api/teams?teamName=" + teamName,
+                url: rootUrl + "/api/user/premium/" + premium,
                 method: "POST",
                 headers: { "Authorization": 'Bearer ' + token }
             }).then(function (response) {
@@ -172,7 +172,7 @@
                 return response.data;
             });
         }
-        
+
         var removeUserFromTeam = function (token, teamId, userId) {
             return $http({
                 url: rootUrl + "/api/team/" + teamId + "/deleteUser/" + userId,
@@ -196,6 +196,7 @@
             deleteTeam: deleteTeam,
             createTeam: createTeam,
             hasPremium: hasPremium,
+            setPremium: setPremium,
             getTeamInfo: getTeamInfo,
             getUsers: getUsers,
             addUserToTeam: addUserToTeam,
