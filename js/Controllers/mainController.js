@@ -19,8 +19,8 @@
                 startedWorkDate = new Date(data.started);//new Date(Date.parse(data.started)).toUTCString();
                 // javascript traktuje przesłąną datę jako czas GMT,automatycznie korygująć go do lokalnej strefy czasoewj
                 // abywyśiwetlany czas był poprawny należy wyliczyć iość dodanych minut i odjąć tę wartość
-                var timeZoneDiff = startedWorkDate.getTimezoneOffset();
-                startedWorkDate = new Date(startedWorkDate.getTime() + timeZoneDiff * 60000);
+                // var timeZoneDiff = startedWorkDate.getTimezoneOffset();
+                // startedWorkDate = new Date(startedWorkDate.getTime() + timeZoneDiff * 60000);
 
                 stop = $interval(calculateTimeDiff, 500);
             }
