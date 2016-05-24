@@ -5,6 +5,7 @@
         (function () {
             if (storage.getItem("token") != null) {
                 $location.path('/logged');
+                $("#menu").addClass("logged");
             }
         } ());
 
@@ -12,6 +13,7 @@
             storage.saveItem("token", token);
             $location.path('/logged');
             $('#spinnerDiv').hide();
+            $("#menu").addClass("logged");
         };
 
         var onError = function (response) {

@@ -59,18 +59,18 @@
                 <a class="pure-menu-heading" href="#/index">TSFF</a>
                 <li class="pure-menu-item menu-item-divided">
                     <ul class="pure-menu-list">
-                        <li class="pure-menu-item"><a href="#/login" class="pure-menu-link">Zaloguj</a></li>
-                        <li class="pure-menu-item"><a href="#/register" class="pure-menu-link">Zarejestruj</a></li>
-                        <li class="pure-menu-item menu-item-divided">
-                            <li class="pure-menu-item" class="menu-item-divided pure-menu-selected">
-                                <li class="pure-menu-item"><a href="#/logged" class="pure-menu-link">Panel główny</a></li>
-                                <li class="pure-menu-item"><a href="#/userTeams" class="pure-menu-link">Twoje zespoly</a></li>
-                                <li class="pure-menu-item menu-item-divided">
-                                    <li class="pure-menu-item"><a href="#/premium" class="pure-menu-link">Kup Premium!</a></li>
-                                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Kontakt</a></li>
-                                    <li class="pure-menu-item menu-item-divided">
-                                        <li class="pure-menu-item"><a href="#" class="pure-menu-link" onclick="localStorage.removeItem('token');">Wyloguj</a></li>
-                                        <li class="pure-menu-item menu-item-divided">
+                        <li class="pure-menu-item not-logged"><a href="#/login" class="pure-menu-link">Zaloguj</a></li>
+                        <li class="pure-menu-item not-logged"><a href="#/register" class="pure-menu-link">Zarejestruj</a></li>
+                        <li class="pure-menu-item menu-item-divided"></li>
+                        <li class="pure-menu-item" class="menu-item-divided pure-menu-selected"></li>
+                        <li class="pure-menu-item logged"><a href="#/logged" class="pure-menu-link">Panel główny</a></li>
+                        <li class="pure-menu-item logged"><a href="#/userTeams" class="pure-menu-link">Twoje zespoly</a></li>
+                        <li class="pure-menu-item menu-item-divided"></li>
+                        <li class="pure-menu-item logged"><a href="#/premium" class="pure-menu-link">Kup Premium!</a></li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Kontakt</a></li>
+                        <li class="pure-menu-item menu-item-divided"></li>
+                        <li class="pure-menu-item logged"><a href="#" class="pure-menu-link" onclick="localStorage.removeItem('token'); $('#menu').removeClass('logged');">Wyloguj</a></li>
+                        <li class="pure-menu-item menu-item-divided"></li>
                     </ul>
             </div>
         </div>

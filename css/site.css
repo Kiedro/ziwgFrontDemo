@@ -27,3 +27,29 @@ a.md-default-theme:not(.md-button), a:not(.md-button) {
 a.md-default-theme:not(.md-button):hover, a:not(.md-button):hover {
     color: white;
 }
+
+#menu.logged li.not-logged{
+    opacity: 0; 
+    max-height: 0;
+    overflow: hidden;
+}
+
+#menu li.not-logged{
+    opacity: 1;
+    max-height: 200px;
+}
+
+#menu.logged li.logged{
+    opacity: 1;
+    max-height: 200px;
+}
+
+#menu li.logged{
+     opacity: 0; 
+     max-height: 0;
+    overflow: hidden;
+}
+
+#menu li{
+      transition: all 1.5s linear;
+}
