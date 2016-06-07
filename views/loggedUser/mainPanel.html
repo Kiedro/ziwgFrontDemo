@@ -10,7 +10,7 @@
             <md-tab label="{{team.name}}" ng-repeat="team in userTeams" ng-click="cleanSelection()">
                 <h3>{{team.name}}</h3>
                 <md-content class="md-padding" layout-xs="column" layout="row">
-                    <div flex-xs flex-gt-xs="40" layout="column" ng-repeat="task in team.tasks">
+                    <div flex-xs flex-gt-xs="40" layout="column" ng-repeat="task in team.tasks | filter:search">
                         <md-card ng-class="{true: 'selected-task', false: ''}[task.selected]">
                             <md-card-title>
                                 <md-card-title-text>
@@ -19,6 +19,10 @@
                             </md-card-title>
                             <md-card-content>
                                 <span class="md-">{{task.description}}</span>
+                                <br>
+                                <md-checkbox ng-disabled="true" aria-label="Ukończone" ng-model="task.completed">
+                                    Ukończone
+                                </md-checkbox>
                             </md-card-content>
                             <md-card-actions layout="row" layout-align="end center">
                                 <md-button ng-click="selectTask(team.id, task.id);">Wybierz zadanie</md-button>
@@ -28,6 +32,7 @@
                 </md-content>
             </md-tab>
         </md-tabs>
+                <label>Completed:  <md-checkbox type="checkbox" ng-model="search.completed" ng-init="search.completed =false"></md-checkbox><br>
     </md-content>
 
 
@@ -46,7 +51,8 @@
             </md-card-title>
             <md-card-actions layout="row" layout-align="end center">
                 <md-button ng-click="startWork()" ng-hide="hasActiveWork">Zacznij pracę</md-button>
-                <md-button class="raised" ng-click="stopWork()" ng-show="hasActiveWork">Skończ pracę</md-button>
+                <md-button class="raised" ng-click="stopWork(true)" ng-show="hasActiveWork">Ukończ zadanie</md-button>
+                <md-button class="raised" ng-click="stopWork(false)" ng-show="hasActiveWork">Skończ pracę</md-button>
             </md-card-actions>
         </md-card>
     </div>

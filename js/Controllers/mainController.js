@@ -11,7 +11,8 @@
         var workedTime = { hours: 0, minutes: 0, seconds: 0 };
         var stop;
         var selectedTaskId;
-
+        var taskFinished;
+        
         function onInitSuccess(data) {
             console.log(data);
             $scope.hasActiveWork = data.activeWork;
@@ -58,16 +59,29 @@
             stop = $interval(calculateTimeDiff, 500);
         }
 
-        function workFinished() {
+        function workFinished(data) {
             $scope.hasActiveWork = false;
+            if (!taskFinished) {
+                return;
+            }
+            
+            for (var i = 0; i < $scope.userTeams.length; i++) {
+                for (var j = 0; j < $scope.userTeams[i].tasks.length; j++) {
+                    if ($scope.userTeams[i].tasks[j].id == data.taskId) {                      
+                        $scope.userTeams[i].tasks[j].completed = true;
+                    }
+                }
+            }
+            // onUserTeamsFetched($scope.userTeams);
         }
 
         function startWork() {
-            tsffService.startWork(storage.getItem("token")).then(workStarted, onError);
+            tsffService.startWork(storage.getItem("token"), selectedTaskId).then(workStarted, onError);
         }
 
-        function stopWork() {
-            tsffService.stopWork(storage.getItem("token")).then(workFinished, onError);
+        function stopWork(finished) {
+            taskFinished = finished;
+            tsffService.stopWork(storage.getItem("token"), taskFinished).then(workFinished, onError);
         }
 
         function calculateTimeDiff() {
@@ -91,6 +105,8 @@
         }
 
         function selectTask(teamId, taskId) {
+            if (selectedTaskId == taskId)
+                taskId = -1;
             selectedTaskId = taskId;
             for (var i = 0; i < $scope.userTeams.length; i++) {
                 for (var j = 0; j < $scope.userTeams[i].tasks.length; j++) {

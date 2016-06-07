@@ -83,9 +83,13 @@
             });
         };
 
-        var startWork = function (token) {
+        var startWork = function (token, taskId) {
+            var url = "/api/work/start";
+            if (taskId > 0) {
+                url += "?taskId=" + taskId; 
+            }
             return $http({
-                url: rootUrl + "/api/work/start",
+                url: rootUrl + url,
                 method: "POST",
                 headers: { "Authorization": 'Bearer ' + token }
             }).then(function (response) {
@@ -93,9 +97,13 @@
             });
         };
 
-        var stopWork = function (token) {
+        var stopWork = function (token, finishedTask) {
+            var url = "/api/work/stop";
+            if (finishedTask == true) {
+                url += "?taskFinished=true"; 
+            }
             return $http({
-                url: rootUrl + "/api/work/stop",
+                url: rootUrl + url,
                 method: "POST",
                 headers: { "Authorization": 'Bearer ' + token }
             }).then(function (response) {
